@@ -1,0 +1,5 @@
+name: magicLottery
+author: magicbrothers
+version: 1.0
+main: de.magicbrothers.lottery.main.MagicLottery
+description: Eine API zur einfachen Erstellung von Ingame Lotterien
