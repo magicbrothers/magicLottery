@@ -8,6 +8,8 @@ So nutzt du die magicLottery API in deinem Plugin:
 3. Importiere in deiner IDE die magicLottery.jar als Library.
 4. Fertig! Jetzt kannst du die API Befehle nutzen!
 
+[Hier](https://github.com/magicbrothers/LotteryCMD) findest du eine Beispielanwendung der API auf Commandebene.
+
 # API:
 
 Variablen:
