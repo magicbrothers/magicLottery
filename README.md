@@ -15,6 +15,7 @@ Variablen:
 - MagicLottery.NO_PERMISSION
 
 Funktionen:
+
 static:
  - boolean hasLottery(String p): hat Spieler 'p' eine aktive Lottery?
  - Lottery getLottery(int id): gibt die Lottery mit der ID 'id'.
