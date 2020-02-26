@@ -27,7 +27,7 @@ public class Lottery {
     }
 
     public boolean add(String p, int coins) {
-        if(players.containsKey(p)) {
+        if(players.containsKey(p) || coins <= 0) {
             return false;
         }
         players.put(p, coins);
@@ -36,6 +36,7 @@ public class Lottery {
     }
 
     public void remove(String p) {
+        jackpot -= players.get(p);
         players.remove(p);
     }
 
