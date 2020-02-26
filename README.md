@@ -19,9 +19,8 @@ Variablen:
 Funktionen:
 
 static:
- - boolean hasLottery(String p): hat Spieler 'p' eine aktive Lottery?
  - Lottery getLottery(int id): gibt die Lottery mit der ID 'id'.
- - Lottery getLottery(String creator): gibt die Lottery von 'creator'.
+ - Lottery getLottery(String name): gibt die Lottery mit dem Namen 'name'.
  - HashMap<Integer, Lottery> getLotteries(): gibt alle Lotteries und ihre IDs.
 
 non-static:

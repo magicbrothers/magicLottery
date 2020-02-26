@@ -15,7 +15,7 @@ public class Lottery {
         lotteries.put(lotteries.size(), this);
     }
 
-    public boolean add(String p, Double coins) {
+    public boolean add(String p, double coins) {
         if(players.containsKey(p) || coins <= 0) {
             return false;
         }
