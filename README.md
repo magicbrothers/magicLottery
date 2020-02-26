@@ -24,11 +24,11 @@ static:
  - HashMap<Integer, Lottery> getLotteries(): gibt alle Lotteries und ihre IDs.
 
 non-static:
- - boolean add(String p, int coins): Spieler 'p' zahlt 'coins' Coins in die Lottery ein, wenn der Spieler noch nicht eingezahlt hat und 'coins' > 0 ist.
- - void remove(String p): entfernt den Spieler 'p' aus der Lottery.
- - HashMap<String, Integer> win(ArrayList<String> players): teilt den Gewinn zwischen den Gewinnern 'players' auf und gibt eine HashMap mit 'Name':'Gewinn'
- - HashMap<String, Integer> randomWin(): ruft win() mit einem random Spieler aus der Lottery auf.
- - HashMap<String, Integer> getPlayers(): gibt Spieler und deren Einsatz.
- - String getCreator(): gibt den Creator der Lottery.
+ - boolean add(String p, double coins): Spieler 'p' zahlt 'coins' Coins in die Lottery ein, wenn der Spieler noch nicht eingezahlt hat und 'coins' > 0 ist.
+ - boolean remove(String p): entfernt den Spieler 'p' aus der Lottery und gibt den Erfolgswert zurück.
+ - HashMap<String, Double> win(ArrayList<String> players): teilt den Gewinn zwischen den Gewinnern 'players' auf und gibt eine HashMap mit 'Name':'Gewinn'
+ - HashMap<String, Double> randomWin(): ruft win() mit einem zufälligen Spieler aus der Lottery auf.
+ - HashMap<String, Double> getPlayers(): gibt die Spieler und deren Einsatz.
+ - String getName(): gibt den Namen der Lottery.
  - int getId(): gibt die ID der Lottery.
  - int getJackpot(): gibt die Anzahl der in die Lottery eingzahlten Coins.
