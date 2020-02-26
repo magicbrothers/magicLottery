@@ -3,7 +3,7 @@ Eine API zur einfachen Erstellung von Minecraft Ingame Lotterien
 
 So nutzt du die magicLottery API in deinem Plugin:
 
-1. Lade dir die [magicLottery.jar](https://github.com/magicbrothers/magicLottery/releases/download/v2.0.0/magicLottery.jar) Datei herunter oder compliere den Quellcode selber.
+1. Lade dir die [magicLottery.jar](https://github.com/magicbrothers/magicLottery/releases/download/v2.0.0/magicLottery.jar) Datei herunter oder compliere den Quellcode selber...
 2. Verschiebe die Datei in den Plugin Ordner deines Servers.
 3. Importiere in deiner IDE die magicLottery.jar als Library.
 4. Fertig! Jetzt kannst du die API Befehle nutzen!
