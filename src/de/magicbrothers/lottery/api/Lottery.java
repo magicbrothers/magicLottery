@@ -1,32 +1,21 @@
 package de.magicbrothers.lottery.api;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public class Lottery {
 
     private static HashMap<Integer, Lottery> lotteries = new HashMap<>();
-    private String creator;
     private int id;
-    private HashMap<String, Integer> players = new HashMap<>();
-    private int jackpot;
+    private String name;
+    private HashMap<String, Double> players = new HashMap<>();
+    private double jackpot;
 
-    public Lottery() {
-        id = (int) (new Date().getTime() / 10);
-        if(id < 0) id *= -1;
-        lotteries.put(id, this);
+    public Lottery(String name) {
+        this.name = name;
+        lotteries.put(lotteries.size(), this);
     }
 
-    public Lottery(String creator) {
-        this.creator = creator;
-        id = (int) (new Date().getTime() / 10);
-        if(id < 0) id *= -1;
-        lotteries.put(id, this);
-    }
-
-    public boolean add(String p, int coins) {
+    public boolean add(String p, Double coins) {
         if(players.containsKey(p) || coins <= 0) {
             return false;
         }
@@ -35,83 +24,64 @@ public class Lottery {
         return true;
     }
 
-    public void remove(String p) {
-        jackpot -= players.get(p);
-        players.remove(p);
-    }
-
-    public HashMap<String, Integer> win(ArrayList<String> players) {
-        HashMap<String, Integer> winners = new HashMap<>();
-        int base = 0;
-
-        for(String p : players) {
-            base += this.players.get(p);
+    public boolean remove(String p) {
+        if (players.containsKey(p)) {
+            jackpot -= players.remove(p);
+            return true;
         }
 
-        for(String p : players) {
-            winners.put(p, (jackpot * (this.players.get(p) / base)));
+        return false;
+    }
+
+    public HashMap<String, Double> win(ArrayList<String> winners) {
+        HashMap<String, Double> wins = new HashMap<>();
+        double base = 0;
+
+        for (String p : winners) {
+            base += players.get(p);
+        }
+
+        System.out.println("Base: " + (29.0 / base));
+
+        for (String p : winners) {
+            wins.put(p, jackpot * (players.get(p) / base));
         }
 
         lotteries.remove(id);
 
-        return winners;
+        return wins;
     }
 
-    public HashMap<String, Integer> randomWin() {
-        ArrayList<String> winner = new ArrayList<>();
-        int random = new Random().nextInt(players.size());
-
-        winner.add((String) players.keySet().toArray()[random]);
-
-        return win(winner);
-    }
-
-    public HashMap<String, Integer> getPlayers() {
-        return players;
-    }
-
-    public String getCreator() {
-        return creator;
+    public HashMap<String, Double> randomWin() {
+        return win(new ArrayList<String>(Collections.singletonList((String) players.keySet().toArray()[new Random().nextInt(players.size())])));
     }
 
     public int getId() {
         return id;
     }
 
-    public int getJackpot() {
+    public String getName() {
+        return name;
+    }
+
+    public double getJackpot() {
         return jackpot;
     }
 
-    public static boolean hasLottery(String p) {
-        boolean hasLottery = false;
-        for (Lottery i : Lottery.getLotteries().values()) {
-            if (i.getCreator().equals(p)) {
-                hasLottery = true;
-                break;
-            }
-        }
-
-        return hasLottery;
-    }
-
-    public static Lottery getLottery(int id) {
-        if(!lotteries.containsKey(id)) {
-            return null;
-        }
-        return lotteries.get(id);
-    }
-
-    public static Lottery getLottery(String creator) {
-        for(Lottery i : lotteries.values()) {
-            if(i.getCreator().equals(creator)) {
-                return i;
-            }
-        }
-        return null;
+    public HashMap<String, Double> getPlayers() {
+        return players;
     }
 
     public static HashMap<Integer, Lottery> getLotteries() {
         return lotteries;
+    }
+
+    public static Lottery getLottery(int id) {
+        return lotteries.get(id);
+    }
+
+    public static Lottery getLottery(String name) {
+        return lotteries.values().stream().filter(lottery -> lottery.getName().equals(name)).findFirst().orElse(null);
     }
 
 }
